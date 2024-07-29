@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import Count from "./Count";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     // Retrieve username from localStorage
@@ -61,15 +59,6 @@ const Navbar = () => {
             </li>
           </ul>
           <form className="d-flex align-items-center">
-            {location.pathname === "/employeeList" && (
-              <span
-                className="d-inline-block me-3"
-                style={{ whiteSpace: "nowrap" }}
-              >
-                <Count />
-              </span>
-            )}
-
             <span
               style={{
                 fontWeight: "bold",

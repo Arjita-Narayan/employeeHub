@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Search from "./Search";
+import Count from "./Count";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -28,7 +29,7 @@ const EmployeeList = () => {
   const handleSearch = (query) => {
     const filtered = employees.filter((employee) => {
       return (
-        employee._id.includes(query) ||
+        employee._id.toLowerCase().includes(query.toLowerCase()) ||
         employee.name.toLowerCase().includes(query.toLowerCase())
       );
     });
@@ -44,10 +45,11 @@ const EmployeeList = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:8080/employee/${id}`);
-      setEmployees(employees.filter((employee) => employee._id !== id));
-      setFilteredEmployees(
-        filteredEmployees.filter((employee) => employee._id !== id)
+      const updatedEmployees = employees.filter(
+        (employee) => employee._id !== id
       );
+      setEmployees(updatedEmployees);
+      setFilteredEmployees(updatedEmployees);
     } catch (error) {
       console.error("Error deleting employee:", error);
     }
@@ -88,6 +90,7 @@ const EmployeeList = () => {
               onSearch={handleSearch}
               onShowFullList={handleShowFullList}
             />
+            <Count totalCount={filteredEmployees.length} />
             {currentEmployees.length > 0 ? (
               <>
                 <table className="table table-striped mt-3">
