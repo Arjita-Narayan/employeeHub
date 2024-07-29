@@ -15,6 +15,7 @@ const CreateEmployee = () => {
     course: "",
     status: "",
   });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (id) {
@@ -41,8 +42,59 @@ const CreateEmployee = () => {
     }));
   };
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateMobileNo = (mobile_no) => {
+    const mobileNoRegex = /^\d{10}$/;
+    return mobileNoRegex.test(mobile_no);
+  };
+
+  const validateForm = async () => {
+    const newErrors = {};
+    if (!credentials.name) newErrors.name = "Name is required";
+    if (!credentials.email) {
+      newErrors.email = "Email is required";
+    } else if (!validateEmail(credentials.email)) {
+      newErrors.email = "Invalid email format";
+    } else {
+      // Check if the email is already in use
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/employee/check-email",
+          { email: credentials.email }
+        );
+        if (response.data.exists) {
+          newErrors.email =
+            "Email is already in use. Please use a different email.";
+        }
+      } catch (error) {
+        console.error("Error checking email uniqueness:", error);
+      }
+    }
+    if (!credentials.mobile_no) {
+      newErrors.mobile_no = "Mobile No. is required";
+    } else if (!validateMobileNo(credentials.mobile_no)) {
+      newErrors.mobile_no = "Mobile No. must be a 10-digit number";
+    }
+    if (!credentials.designation)
+      newErrors.designation = "Designation is required";
+    if (!credentials.gender) newErrors.gender = "Gender is required";
+    if (!credentials.course) newErrors.course = "Course is required";
+    if (!credentials.status) newErrors.status = "Status is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!(await validateForm())) {
+      return;
+    }
 
     try {
       if (id) {
@@ -65,7 +117,7 @@ const CreateEmployee = () => {
         error.response?.data || error.message
       );
       alert(
-        "An error occurred while saving the employee data. Please try again."
+        "An error occurred while saving the employee data. Please use unique email."
       );
     }
   };
@@ -103,13 +155,18 @@ const CreateEmployee = () => {
                 </label>
                 <input
                   type="text"
-                  className="form-control form-control-lg"
+                  className={`form-control form-control-lg ${
+                    errors.name ? "is-invalid" : ""
+                  }`}
                   id="name"
                   name="name"
                   value={credentials.name}
                   onChange={onChange}
                   required
                 />
+                {errors.name && (
+                  <div className="invalid-feedback">{errors.name}</div>
+                )}
               </div>
 
               <div className="mb-2">
@@ -118,13 +175,16 @@ const CreateEmployee = () => {
                 </label>
                 <input
                   type="email"
-                  className="form-control"
+                  className={`form-control ${errors.email ? "is-invalid" : ""}`}
                   id="email"
                   name="email"
                   value={credentials.email}
                   onChange={onChange}
                   required
                 />
+                {errors.email && (
+                  <div className="invalid-feedback">{errors.email}</div>
+                )}
               </div>
 
               <div className="mb-2">
@@ -133,13 +193,18 @@ const CreateEmployee = () => {
                 </label>
                 <input
                   type="text"
-                  className="form-control form-control-lg"
+                  className={`form-control form-control-lg ${
+                    errors.mobile_no ? "is-invalid" : ""
+                  }`}
                   id="mobile_no"
                   name="mobile_no"
                   value={credentials.mobile_no}
                   onChange={onChange}
                   required
                 />
+                {errors.mobile_no && (
+                  <div className="invalid-feedback">{errors.mobile_no}</div>
+                )}
               </div>
 
               <div className="mb-2">
@@ -147,7 +212,9 @@ const CreateEmployee = () => {
                   Designation
                 </label>
                 <select
-                  className="form-control"
+                  className={`form-control form-select form-select-lg mb-3 ${
+                    errors.designation ? "is-invalid" : ""
+                  }`}
                   id="designation"
                   name="designation"
                   value={credentials.designation}
@@ -161,6 +228,9 @@ const CreateEmployee = () => {
                   <option value="Manager">Manager</option>
                   <option value="HR">HR</option>
                 </select>
+                {errors.designation && (
+                  <div className="invalid-feedback">{errors.designation}</div>
+                )}
               </div>
 
               <div className="mb-2">
@@ -176,7 +246,9 @@ const CreateEmployee = () => {
                     checked={credentials.gender === "male"}
                     onChange={onChange}
                   />
-                  <label htmlFor="male">Male</label>
+                  <label htmlFor="male" className="me-2">
+                    Male
+                  </label>
 
                   <input
                     type="radio"
@@ -188,6 +260,11 @@ const CreateEmployee = () => {
                   />
                   <label htmlFor="female">Female</label>
                 </div>
+                {errors.gender && (
+                  <div className="invalid-feedback d-block">
+                    {errors.gender}
+                  </div>
+                )}
               </div>
 
               <div className="mb-2">
@@ -195,7 +272,9 @@ const CreateEmployee = () => {
                   Course
                 </label>
                 <select
-                  className="form-select form-select-lg mb-3"
+                  className={`form-select form-select-lg mb-3 ${
+                    errors.course ? "is-invalid" : ""
+                  }`}
                   id="course"
                   name="course"
                   value={credentials.course}
@@ -207,6 +286,9 @@ const CreateEmployee = () => {
                   <option value="MCA">MCA</option>
                   <option value="BSC">BSC</option>
                 </select>
+                {errors.course && (
+                  <div className="invalid-feedback">{errors.course}</div>
+                )}
               </div>
 
               <div className="mb-2">
@@ -214,7 +296,9 @@ const CreateEmployee = () => {
                   Status
                 </label>
                 <select
-                  className="form-control"
+                  className={`form-control ${
+                    errors.status ? "is-invalid" : ""
+                  }`}
                   id="status"
                   name="status"
                   value={credentials.status}
@@ -227,6 +311,9 @@ const CreateEmployee = () => {
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
                 </select>
+                {errors.status && (
+                  <div className="invalid-feedback">{errors.status}</div>
+                )}
               </div>
 
               <div className="text-center">
