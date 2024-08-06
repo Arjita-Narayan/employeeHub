@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg ">
       <div className="container-fluid">
         <Link className="navbar-brand d-flex align-items-center" to="#">
           <img
@@ -61,8 +61,8 @@ const Navbar = () => {
           <form className="d-flex align-items-center">
             <span
               style={{
-                fontWeight: "bold",
-                color: "#007bff",
+                fontWeight: "inherit",
+                color: "#ffffff",
                 marginRight: "10px",
               }}
             >

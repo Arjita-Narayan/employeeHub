@@ -73,17 +73,10 @@ const EmployeeList = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div
-      style={{
-        maxWidth: "100vw",
-        overflowX: "hidden",
-        padding: "20px",
-        minHeight: "100vh",
-      }}
-    >
+    <div className="employee-list-page">
       <Navbar />
-      <h1 className="text-center">Employees List</h1>
-      <div className="container mt-5" style={{ maxWidth: "800px" }}>
+      <h1 className="text-center heading">EMPLOYEE LIST</h1>
+      <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-md-12">
             <Search
@@ -93,7 +86,7 @@ const EmployeeList = () => {
             <Count totalCount={filteredEmployees.length} />
             {currentEmployees.length > 0 ? (
               <>
-                <table className="table table-striped mt-3">
+                <table className="table table-striped mt-3 ">
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
@@ -111,15 +104,17 @@ const EmployeeList = () => {
                   <tbody>
                     {currentEmployees.map((employee) => (
                       <tr key={employee._id}>
-                        <td>{employee._id}</td>
-                        <td>{employee.name}</td>
-                        <td>{employee.email}</td>
-                        <td>{employee.mobile_no}</td>
-                        <td>{employee.designation}</td>
-                        <td>{employee.gender}</td>
-                        <td>{employee.course}</td>
-                        <td>{employee.status}</td>
-                        <td>
+                        <td style={{ color: "#ffff" }}>{employee._id}</td>
+                        <td style={{ color: "#ffff" }}>{employee.name}</td>
+                        <td style={{ color: "#ffff" }}>{employee.email}</td>
+                        <td style={{ color: "#ffff" }}>{employee.mobile_no}</td>
+                        <td style={{ color: "#ffff" }}>
+                          {employee.designation}
+                        </td>
+                        <td style={{ color: "#ffff" }}>{employee.gender}</td>
+                        <td style={{ color: "#ffff" }}>{employee.course}</td>
+                        <td style={{ color: "#ffff" }}>{employee.status}</td>
+                        <td style={{ color: "#ffff" }}>
                           {employee.date
                             ? new Date(employee.date).toLocaleDateString()
                             : "N/A"}

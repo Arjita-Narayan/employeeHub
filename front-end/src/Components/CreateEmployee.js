@@ -123,32 +123,15 @@ const CreateEmployee = () => {
   };
 
   return (
-    <div
-      style={{
-        maxWidth: "100vw",
-        overflowX: "hidden",
-        padding: "20px",
-        minHeight: "100vh",
-      }}
-    >
+    <div className="create-employee-page">
       <Navbar />
-      <h1 className="text-center">
+      <h1 className="text-center create-employee-heading">
         {id ? "EDIT EMPLOYEE" : "CREATE NEW EMPLOYEE"}
       </h1>
-      <div className="container mt-5" style={{ maxWidth: "800px" }}>
+      <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-md-8">
-            <form
-              onSubmit={handleSubmit}
-              style={{
-                padding: "20px",
-                backgroundColor: "#f8f9fa",
-                borderRadius: "5px",
-                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                maxHeight: "calc(100vh - 180px)",
-                overflowY: "auto",
-              }}
-            >
+            <form onSubmit={handleSubmit} className="create-employee-form">
               <div className="mb-2">
                 <label htmlFor="name" className="form-label">
                   Name
@@ -258,7 +241,9 @@ const CreateEmployee = () => {
                     checked={credentials.gender === "female"}
                     onChange={onChange}
                   />
-                  <label htmlFor="female">Female</label>
+                  <label htmlFor="female" className="me-2">
+                    Female
+                  </label>
                 </div>
                 {errors.gender && (
                   <div className="invalid-feedback d-block">
@@ -317,7 +302,7 @@ const CreateEmployee = () => {
               </div>
 
               <div className="text-center">
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary dual">
                   {id ? "Update Employee" : "Create Employee"}
                 </button>
               </div>

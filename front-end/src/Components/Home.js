@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
+import "../style.css";
 
 const Home = () => {
   const [username, setUsername] = useState("");
@@ -15,17 +16,9 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "40vh",
-          padding: "0 5%",
-        }}
-      >
-        <h1 style={{ fontWeight: "bold" }}>
-          Welcome!!! {username || "Guest"}...
+      <div className="home-container">
+        <h1 className="typing-animation">
+          Hi {username || "Guest"} ,Welcome to EmployeeHub!!
         </h1>
       </div>
     </div>

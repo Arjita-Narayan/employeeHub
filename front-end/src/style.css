@@ -1,0 +1,395 @@
+/* Container styling */
+.lo-si-container {
+  position: relative; /* Make sure the container has a relative position */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.lo-si-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://wallpapercave.com/wp/wp3744429.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.6; /* Adjust opacity level here */
+  z-index: -1; /* Ensure the background is behind the content */
+}
+
+.container {
+  margin-top: 50px;
+}
+
+/* Centered title */
+h2.text-center {
+  margin-bottom: 40px;
+  color: rgb(2, 10, 37);
+  font-weight: bolder;
+  font-style: inherit;
+}
+
+/* Form container */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container .col-md-4 {
+  background: #78ace0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(18, 166, 50, 0.1);
+}
+
+/* Form labels */
+.form-label {
+  font-weight: bold;
+}
+
+/* Form inputs */
+.form-control-lg {
+  padding: 10px;
+  font-size: 1.2em;
+  border-radius: 5px;
+}
+
+/* Submit button */
+.btn-primary {
+  background-color: #3f5085;
+  border: none;
+  padding: 15px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0c49e2;
+}
+
+/* Sign-up link */
+.text-primary {
+  color: #03111f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.text-primary:hover {
+  text-decoration: underline;
+}
+
+/* Navbar specific styles */
+.navbar {
+  background-color: #2c2c2c; /* Dark background color */
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+  color: #cccccc;
+  margin-right: 15px;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.btn-danger {
+  background-color: #5564c1;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.btn-danger:hover {
+  background-color: #5067d0;
+}
+
+.username {
+  font-weight: bold;
+  color: #ffffff;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.container-fluid.arjita {
+  background-color: #2c2c2c;
+}
+
+.navbar-brand img {
+  width: 60px;
+  margin-right: 10px;
+}
+/* Home Page Specific Styles */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust height as needed */
+  padding: 0 5%;
+  background-image: url("https://directlinedev.com/media/cases/rooney/header/background_1_zM58lsj.wide.jpeg"); /* Replace with your background image URL */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* Hide any overflowed content */
+}
+
+.home-container h1 {
+  font-weight: bold;
+  margin-left: 100px;
+  color: white; /* Adjust color as needed */
+  font-size: 3rem; /* Adjust font size as needed */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: for better text readability */
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* Typing Animation */
+.typing-animation {
+  font-weight: bold;
+  color: white; /* Adjust color as needed */
+  font-size: 2rem; /* Adjust font size as needed */
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden; /* Hide overflow */
+  border-right: 4px solid rgba(255, 255, 255, 0.75); /* Cursor effect */
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 50%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+/* Typing effect container */
+.typing-effect {
+  display: inline;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255, 255, 255, 0.75); /* Cursor effect */
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 50%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+/* Employee List Page Styles */
+.employee-list-page {
+  background-color: rgb(
+    21,
+    21,
+    22
+  ); /* Red background for the entire EmployeeList page */
+  color: #e0e0e0; /* Light text color */
+  min-height: 100vh; /* Ensure the page covers full viewport height */
+}
+.heading {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #ffffff;
+  margin-top: 30px;
+}
+
+.table {
+  color: #e4eded; /* Light text color */
+  background-color: #2c2c2c; /* Dark background color for table */
+  border-color: #e9d3d3; /* Darker border color for table */
+}
+
+.table thead {
+  background-color: #1f1f1f; /* Darker header background */
+}
+
+.table thead th {
+  color: #ffffff; /* White text color for table headers */
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #2c2c2c; /* Slightly lighter row background for odd rows */
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #2a2a2a; /* Darker row background for even rows */
+}
+.table td {
+  color: #e0e0e0; /* Light text color for table cells */
+}
+
+.btn-primary {
+  color: #7da640;
+  background-color: #2a2a2a;
+  border: 1px solid white;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+.btn-danger {
+  color: #e51313;
+  background-color: #2a2a2a;
+  border: 1px solid white;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+.btn-primary:hover {
+  background-color: #1f4e24;
+  border: 1px solid white;
+}
+.btn-danger:hover {
+  background-color: #e91b1b;
+  border: 1px solid white;
+}
+
+.btn-secondary {
+  background-color: #444;
+  border: none;
+  color: #e0e0e0;
+}
+
+.btn-secondary:hover {
+  background-color: #555;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Styles for sticky Navbar */
+.navbar-expand-lg {
+  position: sticky;
+  top: 0;
+  margin-bottom: 0;
+  background-color: #1e1e1e; /* Dark background for Navbar */
+  color: #e0e0e0; /* Light text color */
+  z-index: 1000; /* Ensure Navbar is above other content */
+  padding: 8px 3px; /* Adjust padding as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Shadow for better visibility */
+}
+
+/* Dark theme styles for CreateEmployee page */
+
+.create-employee-page {
+  background-color: #151414;
+  padding: 20px;
+  /* padding-top: 10px; */
+  min-height: 100vh;
+}
+
+.create-employee-heading {
+  color: #f0f0f0;
+  font-size: 2rem;
+  margin-top: 50px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 500;
+}
+
+.create-employee-form {
+  padding: 20px;
+  background-color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-height: 60vh;
+  max-width: 70vh;
+  align-items: center;
+  margin: 0 auto;
+  /* margin-left: 200px; */
+  overflow-y: auto;
+}
+
+.create-employee-form .form-control-lg {
+  font-size: 1.25rem;
+  background-color: #444;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+.create-employee-form .form-select-lg {
+  font-size: 1.25rem;
+  background-color: #444;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+.create-employee-form .form-label {
+  font-weight: 500;
+  color: #f0f0f0;
+}
+
+.create-employee-form .invalid-feedback {
+  display: block;
+  color: #dc3545;
+}
+
+.create-employee-form .btn-primary {
+  background-color: #333;
+  border-color: 2px solid white;
+  color: white;
+}
+
+.create-employee-form .btn-primary:hover {
+  background-color: #1e1e1e;
+}
+
+.create-employee-form input,
+.create-employee-form select {
+  background-color: #444;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+.create-employee-form input:focus,
+.create-employee-form select:focus {
+  background-color: #555;
+  border-color: #007bff;
+  color: #f0f0f0;
+}
+.me-2 {
+  color: white;
+}
