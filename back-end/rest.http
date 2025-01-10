@@ -1,0 +1,44 @@
+GET http://localhost:8080
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzY0NDQ2MjMsImV4cCI6MTczNjQ0NTIyMywiYXVkIjoiNjc3ZWFhOTk1MmM5MDA0OGQ2ZTFmOWYwIiwiaXNzIjoicGlja3VycGFnZS5jb20ifQ.rSC0uLOC8Ry7WRf7sQJX3nzPcxv855DfCV5QTmi87kE
+
+
+###Register route
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+     "username":"samaya",
+    "email":"samaya@gmail.com",
+    "password":"sammya099"
+}
+
+###login route
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+     "username":"samaya",
+    "password":"sammya099"
+}
+
+###Refresh token route
+POST http://localhost:8080/auth/refresh-token
+Content-Type: application/json
+
+{
+ "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzY0MzEyMTgsImV4cCI6MTc2Nzk4ODgxOCwiYXVkIjoiNjc3ZWFhOTk1MmM5MDA0OGQ2ZTFmOWYwIiwiaXNzIjoicGlja3VycGFnZS5jb20ifQ.0IUSimxCG-NVAgHlzGNfJWj0EbCY9aMsI__Hfs7eNk4"
+}
+
+###logout rout
+DELETE http://localhost:8080/auth/logout
+Content-Type: application/json
+
+{
+ "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzY0MzEyMTgsImV4cCI6MTc2Nzk4ODgxOCwiYXVkIjoiNjc3ZWFhOTk1MmM5MDA0OGQ2ZTFmOWYwIiwiaXNzIjoicGlja3VycGFnZS5jb20ifQ.0IUSimxCG-NVAgHlzGNfJWj0EbCY9aMsI__Hfs7eNk4"
+}
+
+
+###
+GET http://localhost:8080/employee/all
+
+

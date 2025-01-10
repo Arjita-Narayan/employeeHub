@@ -7,6 +7,7 @@ const Login = () => {
     username: "",
     password: "",
   });
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -44,6 +45,7 @@ const Login = () => {
       localStorage.setItem("accessToken", json.accessToken);
 
       navigate("/home");
+      
     } catch (error) {
       console.error("Login error:", error);
       alert("Use Correct Credentials");

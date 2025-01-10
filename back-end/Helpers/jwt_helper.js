@@ -1,13 +1,13 @@
 const JWT = require("jsonwebtoken");
 const createError = require("http-errors");
-
+//to create access token
 module.exports = {
   signAccessToken: (userId) => {
     return new Promise((resolve, reject) => {
       const payload = {};
       const secret = process.env.ACCESS_TOKEN_SECRET;
       const options = {
-        expiresIn: "60s",
+        expiresIn: "600s",
         issuer: "pickurpage.com",
         audience: userId,
       };
@@ -21,6 +21,7 @@ module.exports = {
       });
     });
   },
+  //middleware to verify token for route GET http://localhost:8080
   verifyAccessToken: (req, res, next) => {
     if (!req.headers["authorization"]) return next(createError.Unauthorized());
     const authHeader = req.headers["authorization"];
@@ -28,6 +29,7 @@ module.exports = {
     const token = bearerToken[1];
     JWT.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
       if (err) {
+        //message for token expiration
         const message =
           err.name === "JsonWebTokenError" ? "Unauthorized" : err.message;
         return next(createError.Unauthorized(message));

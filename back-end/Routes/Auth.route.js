@@ -14,9 +14,9 @@ router.post("/register", async (req, res, next) => {
   console.log(req.body);
   try {
     const result = await authSchema.validateAsync(req.body);
-    console.log(result);
+    //console.log(result);
 
-    const { username, email, password } = result;
+    const { username, email } = result;
 
     // Check if a user with the same username already exists
     const userByUsername = await User.findOne({ username: result.username });
@@ -57,8 +57,7 @@ router.post("/login", async (req, res, next) => {
     const refreshToken = await signRefreshToken(user.id);
 
     res.send({ accessToken, refreshToken });
-
-    res.send(result);
+   // res.send(result);
   } catch (error) {
     if (error.isJoi === true)
       return next(createError.BadRequest("Invalid Username/Password"));
